@@ -27,7 +27,7 @@ export const routes: Route[] = [
   { path: '/friends', Component: Friends },
   { path: '/dropGame', Component: DropGame },
   { path: '/score-review', Component: ScoreReview },
-  // for reference to see the kind of data we have access to
+  // for reference to see the kind of data we have access to.
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
