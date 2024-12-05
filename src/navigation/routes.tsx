@@ -1,10 +1,16 @@
 import type { ComponentType, JSX } from 'react';
 
-import { IndexPage } from '@/pages/IndexPage/IndexPage';
 import { InitDataPage } from '@/pages/InitDataPage.tsx';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
 import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
+import Home from '@/pages/Home';
+import Preloader from '@/pages/Preloader';
+import Task from '@/pages/Task';
+import Wallet from '@/pages/Wallet';
+import Friends from '@/pages/Friends';
+import DropGame from '@/pages/DropGame';
+import ScoreReview from '@/pages/ScoreReview';
 
 interface Route {
   path: string;
@@ -14,7 +20,14 @@ interface Route {
 }
 
 export const routes: Route[] = [
-  { path: '/', Component: IndexPage },
+  { path: '/', Component: Preloader },
+  { path: '/home', Component: Home },
+  { path: '/tasks', Component: Task },
+  { path: '/wallet', Component: Wallet },
+  { path: '/friends', Component: Friends },
+  { path: '/dropGame', Component: DropGame },
+  { path: '/score-review', Component: ScoreReview },
+  // for reference to see the kind of data we have access to
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
