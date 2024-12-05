@@ -31,7 +31,7 @@ interface IParticleProps {
 
 const Particle: React.FC<IParticleProps> = ({ particle, isFrozen, handleClick }) => {
   const [top, setTop] = useState(-60);
-  const [left, setLeft] = useState(0);
+  // const [left, setLeft] = useState(0);
   const particleRef = useRef<HTMLDivElement>(null)
   let interval: any;
   const removeParticle = () => {
@@ -43,7 +43,7 @@ const Particle: React.FC<IParticleProps> = ({ particle, isFrozen, handleClick })
         clearInterval(interval)
       }
     } else {
-      setLeft(getRandomPosition())
+      // setLeft(getRandomPosition())
       interval = setInterval(() => {
         setTop((top) => {
           if(top > (window.innerHeight - 60)) {
