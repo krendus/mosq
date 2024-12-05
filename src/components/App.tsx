@@ -5,16 +5,26 @@ import { Navigate, Route, Routes, HashRouter, useLocation } from 'react-router-d
 import { routes } from '@/navigation/routes.tsx';
 import Navbar from './Navbar';
 
+function Pages() {
+  const location = useLocation();
+  const hideNavbarRoutes = [
+    '/',
+  ];
+  const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+  return <>
+    <div className='pb-16'>
+      <Routes>
+        {routes.map((route) => <Route key={route.path} {...route} />)}
+        <Route path="*" element={<Navigate to="/home" />} />
+      </Routes>
+    </div>
+    {shouldShowNavbar && <Navbar />}
+  </>
+}
 export function App() {
   const lp = useLaunchParams();
-  const location = useLocation();
-
-  // Define routes where Navbar should not be shown
-  const hideNavbarRoutes = [
-    '/', 
-  ];
   const isDark = useSignal(miniApp.isDark);
-  const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+
 
   return (
     <AppRoot
@@ -22,11 +32,7 @@ export function App() {
       platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
     >
       <HashRouter>
-        <Routes>
-          {routes.map((route) => <Route key={route.path} {...route} />)}
-          <Route path="*" element={<Navigate to="/home"/>}/>
-        </Routes>
-        {shouldShowNavbar && <Navbar />}
+        <Pages />
       </HashRouter>
     </AppRoot>
   );
